@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube-web-app
+  template:
+    metadata:
+      labels:
+        app: kube-web-app
+    spec:
+      containers:
+        - name: kube-web-app
+          image: ubozov/web-app:v1
+          ports:
+          - containerPort: 3000
+            protocol: TCP
