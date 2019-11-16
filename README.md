@@ -3,6 +3,7 @@
 This repository has a simple test steps to learn kubernetes.
 Before start you should have a installed `kubernetes` and `minikube` on your machine.
 
+## Prepare
 Gets repository clone
 ```bash
 git clone git@github.com:ubozov/k8s-test.git
@@ -27,9 +28,17 @@ kubectl proxy
 ```
 `kubectl` will make dashboard available at http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ . You should put token to login page.
 
-Creates test pods
+## Deployment
+Creates test pods and launches service via NodePort (port: 32001)
 ```bash
 kubectl apply -f ./kube/app/deployment.yaml
+kubectl apply -f ./kube/app/service.yaml
+```
+
+## Test
+Below command returns the IP address of local minikube cluster, you should pass on browser this IP and port 32001 for check activity
+```bash
+minikube ip
 ```
 
 
